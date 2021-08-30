@@ -10,12 +10,14 @@ import { VehicleService } from './services/vehicle.service';
 })
 export class AppComponent implements OnInit{
   title = 'enigma-interview';
-  vehicles!: Vehicle[];
+
+  isLoading: boolean = true;
+
   constructor(private vehicleService: VehicleService, private alertService: AlertService) {}
 
   ngOnInit(): void {
     this.vehicleService.getAllVehicles().subscribe(res => {
-      this.vehicles = res.objects;
+      this.isLoading = false;
     }, err => {
       this.alertService.error('Przepraszamy, wystąpił błąd :( Prosimy spróbować później.');
     })

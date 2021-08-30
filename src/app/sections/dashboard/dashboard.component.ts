@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Vehicle } from 'src/app/models/vehicle.model';
+import { VehicleService } from 'src/app/services/vehicle.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+  vehicles!: Vehicle[];
+  constructor(private vehicleService: VehicleService) { }
 
   ngOnInit(): void {
+    this.vehicleService.vehiclesList.subscribe(res => {
+      this.vehicles = res;
+    })
   }
 
 }

@@ -1,1 +1,5 @@
-<google-map width="100%" height="100%" [zoom]="zoom" [center]="center" [options]="options"></google-map>
+<google-map width="100%" height="100%" [zoom]="zoom" [center]="center" [options]="options">
+  <map-marker-clusterer [imagePath]="markerClustererImagePath" *ngIf="vehicles.length !=0">
+    <map-marker *ngFor="let vehicle of vehicles" [position]="vehicle.position"></map-marker>
+  </map-marker-clusterer>
+</google-map>

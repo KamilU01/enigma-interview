@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Vehicle } from 'src/app/models/vehicle.model';
+import { VehicleService } from 'src/app/services/vehicle.service';
 
 @Component({
   selector: 'app-map',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
+  
   zoom = 14;
   center!: google.maps.LatLngLiteral;
   options: google.maps.MapOptions = {
@@ -13,7 +16,12 @@ export class MapComponent implements OnInit {
     disableDoubleClickZoom: true,
   }
 
-  constructor() { }
+  vehicles!: Vehicle[];
+
+  markerClustererImagePath =
+      'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m';
+
+  constructor(private vehicleService: VehicleService) { }
 
   ngOnInit(): void {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -21,6 +29,19 @@ export class MapComponent implements OnInit {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       }
+    })
+
+    this.vehicleService.vehiclesList.subscribe(res => {
+      //Dostosowanie otrzymanej odpowiedzi do wymagań Google Maps
+      res.forEach(vehicle => {
+        let lat = vehicle.location.latitude;
+        let lng = vehicle.location.longitude;
+
+        let position = {position: {lat, lng}};
+
+        Object.assign(vehicle, position);
+      });
+      this.vehicles = res;
     })
   }
 
