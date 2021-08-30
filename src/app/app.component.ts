@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Vehicle } from './models/vehicle.model';
+import { AlertService } from './services/alert/alert.service';
 import { VehicleService } from './services/vehicle.service';
 
 @Component({
@@ -10,13 +11,13 @@ import { VehicleService } from './services/vehicle.service';
 export class AppComponent implements OnInit{
   title = 'enigma-interview';
   vehicles!: Vehicle[];
-  constructor(private vehicleService: VehicleService) {}
+  constructor(private vehicleService: VehicleService, private alertService: AlertService) {}
 
   ngOnInit(): void {
     this.vehicleService.getAllVehicles().subscribe(res => {
-      console.log(res)
+      this.vehicles = res.objects;
     }, err => {
-      
+      this.alertService.error('Przepraszamy, wystąpił błąd :( Prosimy spróbować później.');
     })
   }
 }
