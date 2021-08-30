@@ -12,7 +12,7 @@ export interface Vehicle {
             batteryLevelPct: number,
             reservationEnd: Date | null,
             reservation: Date | null,
-            status: string,
+            status: VehicleStatus,
             locationDescription: string,
             address: string | null,
             mapColor: {
@@ -27,4 +27,9 @@ export interface Vehicle {
                 latitude: number,
                 longitude: number
             },
+}
+
+export enum VehicleStatus {
+    AVAILABLE = "AVAILABLE",
+    UNAVAILABLE = "UNAVAILABLE",
 }
