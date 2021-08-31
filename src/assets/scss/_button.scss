@@ -1,0 +1,35 @@
+@import "/src/assets/scss/animations";
+
+.btn {
+
+  &,
+  &:link,
+  &:visited {
+    text-decoration: none;
+    display: inline-block;
+    transition: all .2s;
+    border-radius: 10px;
+    position: relative;
+
+    border: none;
+    cursor: pointer;
+  }
+
+  &--primary {
+    color: var(--color-light);
+    background-color: var(--color-primary);
+    padding: 1.3rem 2.5rem;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(var(--color-primary), 0.2);
+    }
+
+    &:active,
+    &:focus {
+      outline: none;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px;
+    }
+  }
+}
