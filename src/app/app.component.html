@@ -1,6 +1,7 @@
 <main>
   <app-map></app-map>
   <app-dashboard></app-dashboard>
+  <app-vehicle *ngIf="popoutVehicle" [popoutVehicle]="popoutVehicle"></app-vehicle>
 </main>
 
 <div class="loading" *ngIf="isLoading">

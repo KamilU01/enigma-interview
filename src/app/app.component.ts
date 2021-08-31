@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Vehicle } from './models/vehicle.model';
 import { AlertService } from './services/alert/alert.service';
 import { VehicleService } from './services/vehicle.service';
 
@@ -13,6 +14,8 @@ export class AppComponent implements OnInit{
 
   isLoading: boolean = true;
 
+  popoutVehicle!: Vehicle;
+
   constructor(private vehicleService: VehicleService, private alertService: AlertService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -20,6 +23,10 @@ export class AppComponent implements OnInit{
       this.isLoading = false;
     }, err => {
       this.alertService.error('Przepraszamy, wystąpił błąd :( Prosimy spróbować później.');
+    })
+
+    this.vehicleService.popoutVehicle.subscribe(res => {
+      if(res) this.popoutVehicle = res;
     })
   }
 }

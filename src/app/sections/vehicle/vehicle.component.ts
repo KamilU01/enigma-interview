@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Vehicle } from 'src/app/models/vehicle.model';
 import { VehicleService } from 'src/app/services/vehicle.service';
 
 @Component({
@@ -7,10 +8,12 @@ import { VehicleService } from 'src/app/services/vehicle.service';
   styleUrls: ['./vehicle.component.scss']
 })
 export class VehicleComponent implements OnInit {
+  @Input() popoutVehicle!: Vehicle;
 
   constructor(private vehicleService: VehicleService) { }
 
   ngOnInit(): void {
+    console.log(this.popoutVehicle)
   }
 
 }

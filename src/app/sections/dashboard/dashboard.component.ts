@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Vehicle, VehicleStatus } from 'src/app/models/vehicle.model';
+import { Component, OnInit} from '@angular/core';
+import { Vehicle } from 'src/app/models/vehicle.model';
 import { VehicleService } from 'src/app/services/vehicle.service';
 
 @Component({
@@ -37,5 +37,9 @@ export class DashboardComponent implements OnInit {
   filterAndSort(sortBy: number) {
     this.sortById = sortBy;
     this.vehicleService.filterAndSort(sortBy, this.showAvailable);
+  }
+
+  showPopout(vehicle: Vehicle) {
+    this.vehicleService.showPopout(vehicle);
   }
 }

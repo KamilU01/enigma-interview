@@ -12,6 +12,7 @@ export class VehicleService {
   vehiclesList!: Vehicle[];
   public filteredVehiclesList: BehaviorSubject<Vehicle[]> = new BehaviorSubject<Vehicle[]>([]);
   public selectedVehicle: BehaviorSubject<Vehicle | null> = new BehaviorSubject<Vehicle | null>(null);
+  public popoutVehicle: BehaviorSubject<Vehicle | null> = new BehaviorSubject<Vehicle | null>(null);
 
   constructor(private http: HttpClient) { }
 
@@ -59,5 +60,9 @@ export class VehicleService {
     }
 
     this.filteredVehiclesList.next(vehicles);
+  }
+
+  showPopout(vehicle: Vehicle) {
+    this.popoutVehicle.next(vehicle);
   }
 }
