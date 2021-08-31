@@ -20,7 +20,7 @@ export class MapComponent implements OnInit {
 
   markerClustererImagePath =
       'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m';
-
+isLoading: boolean = true;
   constructor(private vehicleService: VehicleService) { }
 
   ngOnInit(): void {
@@ -42,6 +42,7 @@ export class MapComponent implements OnInit {
         Object.assign(vehicle, position);
       });
       this.vehicles = res;
+      this.isLoading = false;
     })
   }
 
