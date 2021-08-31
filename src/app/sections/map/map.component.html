@@ -1,7 +1,8 @@
 <div class="map">
   <google-map width="100%" height="100%" [zoom]="zoom" [center]="center" [options]="options">
     <map-marker-clusterer [imagePath]="markerClustererImagePath">
-      <map-marker (mapClick)="selectVehicle(vehicle)" *ngFor="let vehicle of vehicles" [position]="vehicle.position">
+      <map-marker (mapClick)="selectVehicle(vehicle)" *ngFor="let vehicle of vehicles" [position]="vehicle.position"
+        [icon]="vehicle.status == 'AVAILABLE' ? availableMarker : unavailableMarker">
       </map-marker>
     </map-marker-clusterer>
   </google-map>

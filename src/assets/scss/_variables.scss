@@ -2,10 +2,15 @@
   --color-primary: #141b4b;
 
   --color-danger: #69140E;
+  --color-danger-lighter: #dd2619;
+
   --color-success: #254D32;
+  --color-success-lighter: #1ccf58;
 
   --color-dark: #080708;
   --color-light: #fff;
 
   --font-primary: 'Open Sans', sans-serif;
+
+  --color-primary-filter: invert(13%) sepia(16%) saturate(3816%) hue-rotate(204deg) brightness(101%) contrast(107%);
 }
