@@ -17,6 +17,7 @@ export class MapComponent implements OnInit {
   }
 
   vehicles!: Vehicle[];
+  selectedVehicle!: Vehicle | null;
 
   markerClustererImagePath =
       'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m';
@@ -34,6 +35,18 @@ isLoading: boolean = true;
     this.vehicleService.vehiclesList.subscribe(res => {
       this.vehicles = res;
       this.isLoading = false;
+    })
+
+    this.vehicleService.selectedVehicle.subscribe(res => {
+      this.selectedVehicle = res;
+      //Wycentrowanie obrazu dla wybranego pojazdu
+      if(res) {
+        this.center = {
+          lat: res.position.lat,
+          lng: res.position.lng
+        }
+        this.zoom = 19;
+      }
     })
   }
 
