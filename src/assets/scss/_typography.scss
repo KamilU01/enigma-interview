@@ -1,0 +1,27 @@
+.heading {
+  font-weight: 700;
+
+  &--primary {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+}
+
+.text {
+  &--primary {
+    font-weight: 700;
+    color: var(--color-primary-darker);
+  }
+
+  &--success {
+    color: var(--color-success);
+  }
+
+  &--warning {
+    color: var(--color-warning);
+  }
+
+  &--danger {
+    color: var(--color-danger);
+  }
+}

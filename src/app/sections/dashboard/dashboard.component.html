@@ -1,3 +1,21 @@
-<div class="dashbord__container">
-
+<div class="dashboard">
+  <div class="dashboard__content">
+    <h1 class="dashboard__heading heading heading--primary">Lista samochodów:</h1>
+    <div class="dashboard__item" (click)="selectVehicle(vehicle)" *ngFor="let vehicle of vehicles">
+      <div class="dashboard__item__img">IMG</div>
+      <div class="dashboard__item__details">
+        <h2 class="dashboard__item__name">{{vehicle.name}}</h2>
+        <div class="dashboard__item__statuses">
+          <div class="dashboard__item__status">
+            <img class="dashboard__item__status__img" src="assets/images/battery.svg" alt="Poziom baterii">
+            <p>{{vehicle.batteryLevelPct}} %</p>
+          </div>
+          <div class="dashboard__item__status">
+            <img class="dashboard__item__status__img" src="assets/images/badge.svg" alt="Numer rejestracyjny">
+            <p>{{vehicle.platesNumber}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
