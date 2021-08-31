@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Vehicle } from 'src/app/models/vehicle.model';
+import { Vehicle, VehicleStatus } from 'src/app/models/vehicle.model';
 import { VehicleService } from 'src/app/services/vehicle.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   constructor(private vehicleService: VehicleService) { }
 
   ngOnInit(): void {
-    this.vehicleService.vehiclesList.subscribe(res => {
+    this.vehicleService.filteredVehiclesList.subscribe(res => {
       this.vehicles = res;
     })
 
@@ -29,16 +29,13 @@ export class DashboardComponent implements OnInit {
     this.vehicleService.selectVehicle(vehicle);
   }
 
-
-  sortBy(sortBy: number) {
-    /* 1 - bateria rosnąco */
-    this.vehicles = this.vehicleService.sortBy(this.vehicles, sortBy);
-    this.sortById = sortBy;
-  }
-
   filterAvailable() {
     this.showAvailable = !this.showAvailable;
+    this.filterAndSort(this.sortById);
+  }
 
-    this.vehicles = this.vehicleService.filterAvailable(this.vehicles, this.showAvailable);
+  filterAndSort(sortBy: number) {
+    this.sortById = sortBy;
+    this.vehicleService.filterAndSort(sortBy, this.showAvailable);
   }
 }

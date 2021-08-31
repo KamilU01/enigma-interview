@@ -32,7 +32,7 @@ isLoading: boolean = true;
       }
     })
 
-    this.vehicleService.vehiclesList.subscribe(res => {
+    this.vehicleService.filteredVehiclesList.subscribe(res => {
       this.vehicles = res;
       this.isLoading = false;
     })

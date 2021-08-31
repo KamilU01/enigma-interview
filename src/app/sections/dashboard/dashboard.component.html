@@ -9,7 +9,7 @@
       <div class="dashboard__sort">
         Sortuj według:<img class="arrow" src="assets/images/arrow_down.svg" alt="Rozwiń listę">
         <div class="dashboard__sort__options">
-          <div [ngClass]="{'active': sortById === 1}" class="dashboard__sort__option" (click)="sortBy(1)">
+          <div [ngClass]="{'active': sortById === 1}" class="dashboard__sort__option" (click)="filterAndSort(1)">
             bateria rosnąco
           </div>
         </div>
