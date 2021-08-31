@@ -10,6 +10,9 @@ import { VehicleService } from 'src/app/services/vehicle.service';
 export class DashboardComponent implements OnInit {
   vehicles!: Vehicle[];
   selectedVehicle!: Vehicle | null;
+  sortById!: number;
+  showAvailable: boolean = false;
+
   constructor(private vehicleService: VehicleService) { }
 
   ngOnInit(): void {
@@ -24,5 +27,18 @@ export class DashboardComponent implements OnInit {
 
   selectVehicle(vehicle: Vehicle) {
     this.vehicleService.selectVehicle(vehicle);
+  }
+
+
+  sortBy(sortBy: number) {
+    /* 1 - bateria rosnąco */
+    this.vehicles = this.vehicleService.sortBy(this.vehicles, sortBy);
+    this.sortById = sortBy;
+  }
+
+  filterAvailable() {
+    this.showAvailable = !this.showAvailable;
+
+    this.vehicles = this.vehicleService.filterAvailable(this.vehicles, this.showAvailable);
   }
 }

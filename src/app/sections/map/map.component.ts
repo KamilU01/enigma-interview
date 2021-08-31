@@ -50,4 +50,7 @@ isLoading: boolean = true;
     })
   }
 
+  selectVehicle(vehicle: Vehicle) {
+    this.vehicleService.selectVehicle(vehicle);
+  }
 }

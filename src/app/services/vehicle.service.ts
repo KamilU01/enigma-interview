@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Vehicle } from '../models/vehicle.model';
+import { Vehicle, VehicleStatus } from '../models/vehicle.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +34,31 @@ export class VehicleService {
 
   selectVehicle(vehicle: Vehicle) {
     this.selectedVehicle.next(vehicle);
+  }
+
+  sortBy(vehicles: Vehicle[], sortBy: number) {
+    switch (sortBy) {
+      case 1:
+        vehicles.sort((a, b) => b.batteryLevelPct - a.batteryLevelPct);
+        break;
+    }
+
+    return vehicles;
+  }
+
+  filterAvailable(vehicles: Vehicle[], filter: boolean) {
+    if (filter == true) {
+      vehicles[0].status = VehicleStatus.UNAVAILABLE;
+
+      console.log(vehicles[0])
+
+      vehicles.filter(vehicle => vehicle.status == VehicleStatus.AVAILABLE)
+      console.log(vehicles)
+      return vehicles;
+    } else {
+      let vehicles = this.vehiclesList.getValue();
+
+      return vehicles;
+    }
   }
 }

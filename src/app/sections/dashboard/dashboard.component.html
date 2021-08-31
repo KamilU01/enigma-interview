@@ -1,6 +1,20 @@
 <div class="dashboard">
   <div class="dashboard__content">
     <h1 class="dashboard__heading heading heading--primary">Lista samochodów:</h1>
+    <div class="dashboard__options">
+      <div class="dashboard__filters">
+        <div class="dashboard__filter" [ngClass]="{'active': showAvailable === true}" (click)="filterAvailable()">
+          Dostępne</div>
+      </div>
+      <div class="dashboard__sort">
+        Sortuj według:<img class="arrow" src="assets/images/arrow_down.svg" alt="Rozwiń listę">
+        <div class="dashboard__sort__options">
+          <div [ngClass]="{'active': sortById === 1}" class="dashboard__sort__option" (click)="sortBy(1)">
+            bateria rosnąco
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="dashboard__item" (click)="selectVehicle(vehicle)" *ngFor="let vehicle of vehicles"
       [ngClass]="{'active': vehicle === selectedVehicle}">
       <div class="dashboard__item__img">IMG</div>
