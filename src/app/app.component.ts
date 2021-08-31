@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Vehicle } from './models/vehicle.model';
+import { ActivatedRoute } from '@angular/router';
 import { AlertService } from './services/alert/alert.service';
 import { VehicleService } from './services/vehicle.service';
 
@@ -13,7 +13,7 @@ export class AppComponent implements OnInit{
 
   isLoading: boolean = true;
 
-  constructor(private vehicleService: VehicleService, private alertService: AlertService) {}
+  constructor(private vehicleService: VehicleService, private alertService: AlertService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.vehicleService.getAllVehicles().subscribe(res => {

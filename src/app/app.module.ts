@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './sections/map/map.component';
 import { DashboardComponent } from './sections/dashboard/dashboard.component';
 import { AlertModule } from './services/alert/alert.module';
+import { VehicleComponent } from './sections/vehicle/vehicle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     MapComponent,
+    VehicleComponent,
   ],
   imports: [
     BrowserModule,

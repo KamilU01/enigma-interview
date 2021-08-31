@@ -1,7 +1,8 @@
 <div class="dashboard">
   <div class="dashboard__content">
     <h1 class="dashboard__heading heading heading--primary">Lista samochodów:</h1>
-    <div class="dashboard__item" (click)="selectVehicle(vehicle)" *ngFor="let vehicle of vehicles">
+    <div class="dashboard__item" (click)="selectVehicle(vehicle)" *ngFor="let vehicle of vehicles"
+      [ngClass]="{'active': vehicle === selectedVehicle}">
       <div class="dashboard__item__img">IMG</div>
       <div class="dashboard__item__details">
         <h2 class="dashboard__item__name">{{vehicle.name}}</h2>
