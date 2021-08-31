@@ -6,6 +6,11 @@
     line-height: 1.2;
     color: var(--color-primary);
   }
+
+  &--secondary {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
 }
 
 .text {
@@ -15,14 +20,17 @@
   }
 
   &--success {
+    font-weight: 700;
     color: var(--color-success);
   }
 
   &--warning {
+    font-weight: 700;
     color: var(--color-warning);
   }
 
   &--danger {
+    font-weight: 700;
     color: var(--color-danger);
   }
 }

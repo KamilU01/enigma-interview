@@ -65,4 +65,8 @@ export class VehicleService {
   showPopout(vehicle: Vehicle) {
     this.popoutVehicle.next(vehicle);
   }
+
+  closePopout() {
+    this.popoutVehicle.next(null);
+  }
 }

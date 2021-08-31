@@ -9,14 +9,14 @@ import { VehicleService } from './services/vehicle.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'enigma-interview';
 
   isLoading: boolean = true;
 
-  popoutVehicle!: Vehicle;
+  popoutVehicle!: Vehicle | null;
 
-  constructor(private vehicleService: VehicleService, private alertService: AlertService, private route: ActivatedRoute) {}
+  constructor(private vehicleService: VehicleService, private alertService: AlertService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.vehicleService.getAllVehicles().subscribe(res => {
@@ -26,7 +26,8 @@ export class AppComponent implements OnInit{
     })
 
     this.vehicleService.popoutVehicle.subscribe(res => {
-      if(res) this.popoutVehicle = res;
+      if (res) this.popoutVehicle = res;
+      else this.popoutVehicle = null;
     })
   }
 }

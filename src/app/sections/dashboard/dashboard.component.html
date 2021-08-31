@@ -23,7 +23,8 @@
         <div class="dashboard__item__statuses">
           <div class="dashboard__item__status">
             <img class="dashboard__item__status__img" src="assets/images/battery.svg" alt="Poziom baterii">
-            <p>{{vehicle.batteryLevelPct}} %</p>
+            <p [ngClass]="{'text--success': vehicle.batteryLevelPct >70 && vehicle.batteryLevelPct <=100, 'text--warning': vehicle.batteryLevelPct > 30 && vehicle.batteryLevelPct <=70, 
+              'text--danger':vehicle.batteryLevelPct <=30}">{{vehicle.batteryLevelPct}} %</p>
           </div>
           <div class="dashboard__item__status">
             <img class="dashboard__item__status__img" src="assets/images/badge.svg" alt="Numer rejestracyjny">

@@ -1,1 +1,30 @@
-<p>vehicle works!</p>
+<div class="background" (click)="closePopout()"></div>
+<div class="popout">
+  <img class="popout__close" (click)="closePopout()" src="assets/images/close.svg" alt="Zamknij okno">
+  <div class="popout__container">
+    <div class="popout__img">
+      IMG
+    </div>
+    <div class="popout__content">
+      <h1 class="popout__heading heading heading--primary">{{popoutVehicle.name}}</h1>
+      <div class="popout__desc" *ngIf="popoutVehicle.description">
+        <h2 class="heading heading--secondary">Opis:</h2>
+        <p class="popout__paragraph">{{popoutVehicle.description}}</p>
+      </div>
+      <div class="popout__details">
+        <h2 class="heading heading--secondary">Szczegóły:</h2>
+        <div class="popout__details__content">
+          <div class="popout__detail">
+            <img class="popout__detail__img" src="assets/images/battery.svg" alt="Poziom baterii">
+            <p [ngClass]="{'text--success': popoutVehicle.batteryLevelPct >70 && popoutVehicle.batteryLevelPct <=100, 'text--warning': popoutVehicle.batteryLevelPct > 30 && popoutVehicle.batteryLevelPct <=70, 
+                'text--danger':popoutVehicle.batteryLevelPct <=30}">{{popoutVehicle.batteryLevelPct}} %</p>
+          </div>
+          <div class="popout__detail">
+            <img class="popout__detail__img" src="assets/images/badge.svg" alt="Numer rejestracyjny">
+            <p>{{popoutVehicle.platesNumber}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

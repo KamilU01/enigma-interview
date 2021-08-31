@@ -13,7 +13,9 @@ export class VehicleComponent implements OnInit {
   constructor(private vehicleService: VehicleService) { }
 
   ngOnInit(): void {
-    console.log(this.popoutVehicle)
   }
 
+  closePopout() {
+    this.vehicleService.closePopout();
+  }
 }
