@@ -15,7 +15,19 @@ export class VehicleService {
 
   getAllVehicles() {
     return this.http.get<{objects: Vehicle[]}>(environment.apiUrl + '?objectType=VEHICLE').pipe(
-      map(list => this.vehiclesList.next(list.objects))
+      map(res => {
+      //Dostosowanie otrzymanej odpowiedzi do wymagań Google Maps
+      res.objects.forEach(vehicle => {
+          let lat = vehicle.location.latitude;
+          let lng = vehicle.location.longitude;
+  
+          let position = {position: {lat, lng}};
+  
+          Object.assign(vehicle, position);
+        });
+
+        this.vehiclesList.next(res.objects);
+      })
     )
   }
 }

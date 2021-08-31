@@ -32,15 +32,6 @@ isLoading: boolean = true;
     })
 
     this.vehicleService.vehiclesList.subscribe(res => {
-      //Dostosowanie otrzymanej odpowiedzi do wymagań Google Maps
-      res.forEach(vehicle => {
-        let lat = vehicle.location.latitude;
-        let lng = vehicle.location.longitude;
-
-        let position = {position: {lat, lng}};
-
-        Object.assign(vehicle, position);
-      });
       this.vehicles = res;
       this.isLoading = false;
     })
